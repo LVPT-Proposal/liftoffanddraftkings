@@ -87,11 +87,11 @@
     .liftoff-brand-panel { background: rgba(255,255,255,0.9); backdrop-filter: blur(24px); border-radius: 48px; padding: 3rem; max-width: 800px; margin: 0 auto; box-shadow: 0 40px 60px -20px rgba(0,0,0,0.3); border: 1px solid rgba(30,136,229,0.3); display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 300px; }
     .liftoff-brand-panel h2 { color: var(--liftoff-slate); font-size: clamp(2rem, 6vw, 2.8rem); text-align: center; }
     
-    /* Single pro card */
-    .single-pro { max-width: 400px; margin: 0 auto; }
+    /* Pro grid restored */
+    .pro-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-sm); }
     .pro-card { background: rgba(8,20,8,0.6); backdrop-filter: blur(12px); border-radius: 28px; overflow: hidden; border: 1px solid rgba(31,204,74,0.25); }
-    .pro-card img { width: 100%; height: 280px; object-fit: cover; object-position: top; }
-    .pro-info { padding: 24px; text-align: center; }
+    .pro-card img { width: 100%; height: 220px; object-fit: cover; object-position: top; }
+    .pro-info { padding: 20px; }
     
     .timeline-wrapper {
       background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
@@ -112,7 +112,7 @@
     @media (max-width: 800px) {
       .co-header { display: none; }
       .mobile-nav { display: flex; }
-      .hero-grid { grid-template-columns: 1fr; }
+      .hero-grid, .pro-grid { grid-template-columns: 1fr; }
       .timeline-item { grid-template-columns: 1fr; gap: 0.3rem; }
       .timeline-num { margin-bottom: 0.2rem; }
       .timeline-wrapper { padding: var(--space-sm); }
@@ -174,6 +174,7 @@
     <button class="mobile-nav-btn" data-scroll="hero"><i class="fa-solid fa-house"></i></button>
     <button class="mobile-nav-btn" data-scroll="gallery"><i class="fa-solid fa-image"></i></button>
     <button class="mobile-nav-btn" data-scroll="venue"><i class="fa-solid fa-location-dot"></i></button>
+    <button class="mobile-nav-btn" data-scroll="pros"><i class="fa-solid fa-user"></i></button>
     <button class="mobile-nav-btn" data-scroll="flow"><i class="fa-solid fa-clock"></i></button>
     <button class="mobile-nav-btn" data-scroll="cta"><i class="fa-solid fa-check"></i></button>
   </div>
@@ -192,7 +193,7 @@
         <button class="nav-btn" data-scroll="hero">Home</button>
         <button class="nav-btn" data-scroll="gallery">Gallery</button>
         <button class="nav-btn" data-scroll="venue">Venue</button>
-        <button class="nav-btn" data-scroll="pro">Pro</button>
+        <button class="nav-btn" data-scroll="pros">Pros</button>
         <button class="nav-btn" data-scroll="flow">Flow</button>
         <button class="nav-btn" data-scroll="cta">Next Steps</button>
       </nav>
@@ -272,17 +273,13 @@
       </div>
     </div>
 
-    <section id="pro">
-      <div class="reveal"><div class="kicker">elite instructor</div><h2>Your Pro for the Afternoon</h2></div>
-      <div class="single-pro">
-        <div class="pro-card">
-          <img src="https://www.seminolehardrockpokeropen.com/wp-content/uploads/2022/01/2022-LHPO-Jeff-Madsen.jpg" alt="Jeff Madsen">
-          <div class="pro-info">
-            <h3>Jeff Madsen</h3>
-            <p style="color:var(--dk-green); font-weight:600;">4 WSOP Bracelets · WSOP Player of the Year · $7M+ earnings</p>
-            <p style="margin-top:0.8rem;">Renowned for his ability to break down complex decisions into clear, actionable insights — perfect for mixed‑skill groups.</p>
-          </div>
-        </div>
+    <section id="pros">
+      <div class="reveal"><div class="kicker">elite instructors</div><h2>Some of our Elite Instructors</h2></div>
+      <div class="pro-grid">
+        <div class="pro-card"><img src="https://www.gamblinginsider.com/img/news/kenna-james-ape-in-poker-partnership.jpg"><div class="pro-info"><h3>Kenna James</h3><p>20+ yr Veteran · $4.2M+</p></div></div>
+        <div class="pro-card"><img src="https://www.seminolehardrockpokeropen.com/wp-content/uploads/2022/01/2022-LHPO-Jeff-Madsen.jpg"><div class="pro-info"><h3>Jeff Madsen</h3><p>4 WSOP Bracelets · $7M+</p></div></div>
+        <div class="pro-card"><img src="https://media.cardplayer.com/assets/000/031/133/BLACK_WINS.jpg"><div class="pro-info"><h3>Taylor Black</h3><p>WPT Champ · $5.3M+</p></div></div>
+        <div class="pro-card"><img src="https://s.pnimg.net/9BAfDHPTszjJnQoJZKBseCj5xEK867L6gzAhY0EdeC0/pr:article-leading-desktop-2x/aHR0cHM6Ly9wbmlt/Zy5uZXQvdy9hcnRp/Y2xlcy8wLzY0OS84/MTNmNDJhOWI4Lmpw/Zw.webp"><div class="pro-info"><h3>Nick Pupillo</h3><p>WSOP Bracelet · $6.3M+</p></div></div>
       </div>
     </section>
 
@@ -291,7 +288,7 @@
       <div class="timeline-wrapper reveal">
         <div class="timeline">
           <div class="timeline-item"><span class="timeline-num">1:00–1:10 PM</span><div><h3>Get drinks / Get Ready!</h3></div></div>
-          <div class="timeline-item"><span class="timeline-num">1:10–2:20 PM</span><div><h3>Hand Analysis with Jeff Madsen</h3></div></div>
+          <div class="timeline-item"><span class="timeline-num">1:10–2:20 PM</span><div><h3>Hand Analysis with Pro</h3></div></div>
           <div class="timeline-item"><span class="timeline-num">2:20–2:30 PM</span><div><h3>Break</h3></div></div>
           <div class="timeline-item"><span class="timeline-num">2:30–3:50 PM</span><div><h3>Sit & Go / Live play with coaching</h3></div></div>
           <div class="timeline-item"><span class="timeline-num">3:50–4:00 PM</span><div><h3>Wrap it up / Handshakes & High Fives</h3></div></div>
