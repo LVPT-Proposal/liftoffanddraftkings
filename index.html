@@ -111,10 +111,23 @@
       border-radius: 48px; padding: var(--space-md) var(--space-lg);
       max-width: 900px; margin: 0 auto;
     }
-    .timeline-heading {
-      background: #000000;  /* solid black, no blur */
-      display: inline-block; padding: 0.3rem 1.8rem; border-radius: 60px;
-      margin-bottom: 1.5rem;
+   /* Timeline heading - centered on both desktop and mobile */
+.timeline-heading {
+  background: #000000;  /* solid black */
+  display: block;
+  width: fit-content;
+  margin: 0 auto 1.5rem auto;
+  padding: 0.3rem 1.8rem;
+  border-radius: 60px;
+  text-align: center;
+}
+.timeline-heading .kicker {
+  text-align: center;
+  display: block;
+}
+.timeline-heading h2 {
+  text-align: center;
+  margin: 0;
     }
     .timeline-list {
       list-style: none;
@@ -222,6 +235,15 @@
       .mobile-nav { display: none; }
       #flow h2 { text-align: center; }
     }
+    /* On mobile, ensure the kicker (1:00 PM – 4:00 PM) is centered */
+@media (max-width: 800px) {
+  .timeline-heading {
+    padding: 0.3rem 1.2rem;
+  }
+  .timeline-heading .kicker {
+    font-size: 0.8rem;
+  }
+}
   </style>
 </head>
 <body>
