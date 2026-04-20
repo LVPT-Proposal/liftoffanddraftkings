@@ -93,6 +93,18 @@
     .pro-card img { width: 100%; height: 220px; object-fit: cover; object-position: top; }
     .pro-info { padding: 20px; }
     
+    /* Venue layout */
+    .venue-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      align-items: center;
+    }
+    .venue-grid img {
+      width: 100%;
+      border-radius: 20px;
+    }
+    
     /* Timeline */
     .timeline-wrapper {
       background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
@@ -100,7 +112,7 @@
       max-width: 900px; margin: 0 auto;
     }
     .timeline-heading {
-      background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+      background: #000000;  /* solid black, no blur */
       display: inline-block; padding: 0.3rem 1.8rem; border-radius: 60px;
       margin-bottom: 1.5rem;
     }
@@ -145,11 +157,30 @@
       gap: 0.3rem;
     }
     
+    /* Hero two-line brand text */
+    .hero-brand-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .hero-brand-line {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.1rem;
+    }
+    .hero-brand-line i {
+      width: 1.5rem;
+      color: var(--dk-green);
+    }
+    
     /* Mobile overrides */
     @media (max-width: 800px) {
       .co-header { display: none; }
       .mobile-nav { display: flex; }
       .hero-grid, .pro-grid { grid-template-columns: 1fr; }
+      .venue-grid { grid-template-columns: 1fr; }
       .timeline-wrapper { padding: var(--space-sm); }
       .gallery-strip { grid-template-columns: 1fr; gap: 15px; }
       .gallery-item { aspect-ratio: 16/9; }
@@ -260,7 +291,16 @@
         <div class="reveal" id="heroMedia">
           <div class="media-card">
             <img src="https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/69e558432c135a8c8369da1b.png" style="border-radius:20px; width:100%;">
-            <h3 style="margin-top:1rem;">Liftoff AI powers the app economy. DraftKings fuels the competitive spirit.</h3>
+            <div class="hero-brand-lines">
+              <div class="hero-brand-line">
+                <i class="fa-solid fa-rocket"></i>
+                <span>Liftoff AI powers the app economy.</span>
+              </div>
+              <div class="hero-brand-line">
+                <i class="fa-solid fa-crown"></i>
+                <span>DraftKings fuels the competitive spirit.</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -285,10 +325,8 @@
 
     <section id="venue">
       <div class="reveal"><div class="kicker">THE EXPERIENCE</div><h2>The Venetian Poker Room</h2></div>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-md); align-items:center;">
-        <div class="media-card">
-          <img src="https://storage.googleapis.com/msgsndr/E2BEbKIK8SvsJICq4vXY/media/693b4f0f5b7f6413a3defc1e.jpg" style="border-radius:20px; width:100%;">
-        </div>
+      <div class="venue-grid">
+        <img src="https://storage.googleapis.com/msgsndr/E2BEbKIK8SvsJICq4vXY/media/693b4f0f5b7f6413a3defc1e.jpg" alt="Venetian Poker Room">
         <div class="media-card">
           <h3 style="color:var(--dk-green);">Private executive table · Real money gaming</h3>
           <p style="margin-top:1rem;">A dedicated table in the prestigious Venetian Poker Room with a world‑class pro, premium open bar, curated appetizers, and branded takeaways. The definitive Vegas poker experience.</p>
@@ -314,7 +352,7 @@
     </div>
 
     <section id="pros">
-      <div class="reveal"><div class="kicker">elite instructors</div><h2>Some of our Elite Instructors</h2></div>
+      <div class="reveal"><div class="kicker">Legendary Instructors</div><h2>Some of our Legendary Instructors</h2></div>
       <div class="pro-grid">
         <div class="pro-card"><img src="https://www.gamblinginsider.com/img/news/kenna-james-ape-in-poker-partnership.jpg"><div class="pro-info"><h3>Kenna James</h3><p>20+ yr Veteran · $4.2M+</p></div></div>
         <div class="pro-card"><img src="https://www.seminolehardrockpokeropen.com/wp-content/uploads/2022/01/2022-LHPO-Jeff-Madsen.jpg"><div class="pro-info"><h3>Jeff Madsen</h3><p>4 WSOP Bracelets · $7M+</p></div></div>
