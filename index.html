@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Liftoff AI + DraftKings | Crown & Cortex Experience</title>
-  <meta name="description" content="Co‑branded executive proposal: Liftoff AI and DraftKings. Venetian, Mob Museum, Distillery, Allegiant Stadium.">
+  <meta name="description" content="Co‑branded executive proposal: Liftoff AI and DraftKings. Venetian Poker Room.">
   <!-- FONTS & ICONS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,6 @@
       --text-muted: #B0C7B0;
       --font-body: 'Inter', sans-serif;
       --font-display: 'Plus Jakarta Sans', sans-serif;
-      --space-xs: clamp(0.5rem, 2vw, 0.8rem);
       --space-sm: clamp(1rem, 3vw, 1.8rem);
       --space-md: clamp(1.8rem, 5vw, 3rem);
       --space-lg: clamp(3rem, 8vw, 5rem);
@@ -81,25 +80,18 @@
     .gallery-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
     .gallery-item { aspect-ratio: 4/3; overflow: hidden; border-radius: 20px; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-    .venue-rail { display: flex; gap: var(--space-sm); overflow-x: auto; padding: 10px 0 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
-    .venue-card { flex: 0 0 260px; scroll-snap-align: center; background: rgba(8,20,8,0.7); backdrop-filter: blur(12px); border-radius: 28px; padding: 20px; border: 1px solid rgba(31,204,74,0.25); cursor: pointer; transition: all 0.3s; color: white; }
-    .venue-card.is-active { border-color: var(--liftoff-blue); box-shadow: 0 0 0 2px rgba(30,136,229,0.3), 0 0 30px rgba(31,204,74,0.3); background: rgba(20,40,20,0.8); }
-    .venue-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 18px; margin-bottom: 16px; }
-    .venue-panel { display: none; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin-top: var(--space-md); }
-    .venue-panel.is-active { display: grid; }
-    .venue-panel img { border-radius: 24px; width: 100%; }
-    .pricing-table { width: 100%; border-collapse: collapse; }
-    .pricing-table td { padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .venue-pricing-card { background: rgba(8,20,8,0.6); backdrop-filter: blur(12px); border-radius: 28px; padding: 2rem; border: 1px solid rgba(31,204,74,0.25); }
+    
     .transition-zone { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0; overflow: hidden; z-index: 25; }
     .transition-content { position: relative; z-index: 30; text-align: center; transform: scale(0.9); opacity: 0; transition: all 1.8s; width: 100%; padding: 1rem; }
     .transition-content.active { opacity: 1; transform: scale(1); }
     .liftoff-brand-panel { background: rgba(255,255,255,0.9); backdrop-filter: blur(24px); border-radius: 48px; padding: 3rem; max-width: 800px; margin: 0 auto; box-shadow: 0 40px 60px -20px rgba(0,0,0,0.3); border: 1px solid rgba(30,136,229,0.3); display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 300px; }
     .liftoff-brand-panel h2 { color: var(--liftoff-slate); font-size: clamp(2rem, 6vw, 2.8rem); text-align: center; }
-    .pro-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: var(--space-sm); }
+    
+    /* Single pro card */
+    .single-pro { max-width: 400px; margin: 0 auto; }
     .pro-card { background: rgba(8,20,8,0.6); backdrop-filter: blur(12px); border-radius: 28px; overflow: hidden; border: 1px solid rgba(31,204,74,0.25); }
-    .pro-card img { width: 100%; height: 220px; object-fit: cover; object-position: top; }
-    .pro-info { padding: 20px; }
+    .pro-card img { width: 100%; height: 280px; object-fit: cover; object-position: top; }
+    .pro-info { padding: 24px; text-align: center; }
     
     .timeline-wrapper {
       background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
@@ -115,30 +107,26 @@
     .fab-top { position: fixed; bottom: 30px; right: 30px; width: 56px; height: 56px; border-radius: 30px; background: var(--dk-green); color: black; border: none; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; z-index: 99; opacity: 0; transition: 0.2s; box-shadow: 0 10px 30px #1FCC4A; }
     .fab-top.visible { opacity: 1; }
     .reveal { opacity: 0; transform: translateY(30px); }
-    .inclusions-list { display: flex; flex-wrap: wrap; gap: 0.8rem 1.5rem; }
-    .inclusions-list span { display: inline-flex; align-items: center; gap: 6px; }
     
     /* Mobile overrides */
     @media (max-width: 800px) {
       .co-header { display: none; }
       .mobile-nav { display: flex; }
-      .hero-grid, .venue-panel.is-active, .pro-grid { grid-template-columns: 1fr; }
+      .hero-grid { grid-template-columns: 1fr; }
       .timeline-item { grid-template-columns: 1fr; gap: 0.3rem; }
       .timeline-num { margin-bottom: 0.2rem; }
-      .inclusions-list { flex-direction: column; gap: 0.5rem; }
       .timeline-wrapper { padding: var(--space-sm); }
       .gallery-strip { grid-template-columns: 1fr; gap: 15px; }
       .gallery-item { aspect-ratio: 16/9; }
       .poker-float { white-space: normal; max-width: 200px; padding: 10px 18px; font-size: 0.85rem; }
       
-      /* Darkened filter + blur behind all titles on mobile */
-      h1, h2, h3, .kicker, .section-title, .hero-title, .flow-heading {
+      h1, h2, h3, .kicker {
         background: rgba(0,0,0,0.4); backdrop-filter: blur(8px);
         display: inline-block; padding: 0.3rem 1.2rem; border-radius: 60px;
         margin-bottom: 1rem;
       }
       .kicker { background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); }
-      .media-card, .venue-card, .venue-pricing-card, .timeline-wrapper, .liftoff-brand-panel {
+      .media-card, .timeline-wrapper, .liftoff-brand-panel {
         background: rgba(0,0,0,0.5) !important;
         backdrop-filter: blur(12px);
       }
@@ -153,18 +141,14 @@
       #float3 { bottom: 30% !important; left: 2% !important; }
       #float4 { bottom: 12% !important; right: 2% !important; }
       
-      /* Remove grey background from CTA title & Next Steps on mobile, center contact */
       .cta-light h2, .cta-light h3 {
         background: transparent; backdrop-filter: none;
         text-align: center; display: block; padding: 0;
       }
-      .cta-light p:last-of-type {
-        text-align: center;
-      }
+      .cta-light p:last-of-type { text-align: center; }
     }
     @media (min-width: 801px) {
       .mobile-nav { display: none; }
-      /* Center timeline heading on desktop */
       #flow h2 { text-align: center; }
     }
   </style>
@@ -189,8 +173,7 @@
   <div class="mobile-nav">
     <button class="mobile-nav-btn" data-scroll="hero"><i class="fa-solid fa-house"></i></button>
     <button class="mobile-nav-btn" data-scroll="gallery"><i class="fa-solid fa-image"></i></button>
-    <button class="mobile-nav-btn" data-scroll="venues"><i class="fa-solid fa-location-dot"></i></button>
-    <button class="mobile-nav-btn" data-scroll="pricing"><i class="fa-solid fa-tag"></i></button>
+    <button class="mobile-nav-btn" data-scroll="venue"><i class="fa-solid fa-location-dot"></i></button>
     <button class="mobile-nav-btn" data-scroll="flow"><i class="fa-solid fa-clock"></i></button>
     <button class="mobile-nav-btn" data-scroll="cta"><i class="fa-solid fa-check"></i></button>
   </div>
@@ -208,8 +191,8 @@
       <nav class="nav-links">
         <button class="nav-btn" data-scroll="hero">Home</button>
         <button class="nav-btn" data-scroll="gallery">Gallery</button>
-        <button class="nav-btn" data-scroll="venues">Venues</button>
-        <button class="nav-btn" data-scroll="pricing">Pricing</button>
+        <button class="nav-btn" data-scroll="venue">Venue</button>
+        <button class="nav-btn" data-scroll="pro">Pro</button>
         <button class="nav-btn" data-scroll="flow">Flow</button>
         <button class="nav-btn" data-scroll="cta">Next Steps</button>
       </nav>
@@ -223,13 +206,13 @@
           <h1>Where <span class="hero-highlight">AI‑powered growth</span> meets <span class="hero-highlight">competitive edge.</span></h1>
           <p style="font-size:1.2rem; margin:1.2rem 0; color:var(--text-muted);">Liftoff AI and DraftKings are coming together for an executive poker experience that fuses Cortex‑level precision with the crown of sports betting.</p>
           <div style="display:flex; gap:12px; flex-wrap:wrap; margin:2rem 0;">
-            <span class="stat-pill"><i class="fa-solid fa-microchip"></i> liftoff AI</span>
+            <span class="stat-pill"><i class="fa-solid fa-microchip"></i> Liftoff AI</span>
             <span class="stat-pill"><i class="fa-solid fa-crown" style="color:var(--dk-green);"></i> DraftKings</span>
             <span class="stat-pill"><i class="fa-solid fa-champagne-glasses"></i> Premium F&B</span>
-            <span class="stat-pill"><i class="fa-solid fa-building"></i> Premium Venue</span>
+            <span class="stat-pill"><i class="fa-solid fa-building"></i> Venetian Poker Room</span>
           </div>
           <div style="display:flex; gap:15px; flex-wrap:wrap;">
-            <a href="#venues" class="btn btn-primary" data-scroll="venues"><i class="fa-solid fa-dice"></i> Explore experiences</a>
+            <a href="#venue" class="btn btn-primary" data-scroll="venue"><i class="fa-solid fa-dice"></i> Explore the experience</a>
             <a href="#cta" class="btn btn-outline" data-scroll="cta"><i class="fa-regular fa-star"></i> Approve build</a>
           </div>
         </div>
@@ -255,55 +238,26 @@
     <section id="hand-analysis">
       <div class="reveal"><div class="kicker">the core value</div><h2>What is Hand Analysis?</h2></div>
       <div class="media-card" style="font-size:1.3rem; padding:2.5rem;">
-        <p>Our pros will confidently break down what all players are doing & if it is the most optimal play or if there was a better option. This is real‑time feedback designed to sharpen analytical thinking & boost your confidence when making decisions under pressure.</p>
+        <p>Our pro will confidently break down what all players are doing & if it is the most optimal play or if there was a better option. This is real‑time feedback designed to sharpen analytical thinking & boost your confidence when making decisions under pressure.</p>
       </div>
     </section>
 
-    <section id="venues" class="full-bleed">
-      <div class="reveal"><div class="kicker">click to center & reveal</div><h2>Four environments. One unforgettable arc.</h2></div>
-      <div class="venue-rail" id="venueRail">
-        <div class="venue-card is-active" data-venue="venetian"><img src="https://storage.googleapis.com/msgsndr/E2BEbKIK8SvsJICq4vXY/media/693b4f0facebf7f15448df05.jpg"><div class="kicker">PRESTIGE</div><h3>The Venetian Poker Room</h3><p>$12,192 all‑in</p></div>
-        <div class="venue-card" data-venue="distillery"><img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/697a5d28b700a2a6f37291b3.jpg"><div class="kicker">CRAFT</div><h3>Las Vegas Distillery</h3><p>$14,100 + tax</p></div>
-        <div class="venue-card" data-venue="mob"><img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/697a5c8ff215da264751a508.jpg"><div class="kicker">CINEMATIC</div><h3>The Mob Museum</h3><p>$15,300 + tax</p></div>
-        <div class="venue-card" data-venue="allegiant"><img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/697a5d28a1d79ed017c023b2.jpg"><div class="kicker">DREAM</div><h3>Allegiant Stadium</h3><p>$32,200 + tax</p></div>
-      </div>
-      <div id="venuePanels">
-        <div class="venue-panel is-active" id="panel-venetian"><img src="https://storage.googleapis.com/msgsndr/E2BEbKIK8SvsJICq4vXY/media/693b4f0f5b7f6413a3defc1e.jpg"><div><h3>Venetian: real money gaming</h3><p>Full casino experience with 2 dealers, open bar, taco & antipasto stations, branded guides, and Sprinter transport.</p></div></div>
-        <div class="venue-panel" id="panel-distillery"><img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/697a5d28b700a2a6f37291b3.jpg"><div><h3>Distillery: private & cocktail‑forward</h3><p>Training only (prizing possible).</p></div></div>
-        <div class="venue-panel" id="panel-mob"><img src="https://themobmuseum.org/wp-content/uploads/2021/02/TheMobMuseum_PrivateEvent_Distillery-1-1024x683-1.jpg"><div><h3>Mob Museum: cinematic layer</h3><p>Training only (prizing possible). Includes museum tour.</p></div></div>
-        <div class="venue-panel" id="panel-allegiant"><img src="https://storage.googleapis.com/msgsndr/NDOgzs7w4I6qjHbRXevV/media/697a5d28a1d79ed017c023b2.jpg"><div><h3>Allegiant Stadium: ultimate dream</h3><p>Private NFL room + stadium tour.</p></div></div>
-      </div>
-    </section>
-
-    <section id="pricing">
-      <div class="reveal"><div class="kicker">FEATURED EXPERIENCE</div><h2>Venetian Poker Room · All‑Inclusive</h2></div>
-      <div class="venue-pricing-card">
-        <table class="pricing-table">
-          <tr><td>The Venetian Poker Room: Venue, Tables, Chips, Cards, 2 Dealers</td><td>$2,900</td></tr>
-          <tr><td>Poker Pros: 90‑minutes Hand Analysis with 2 pros</td><td>$4,500</td></tr>
-          <tr><td>Round Trip Transportation: 12 Passenger Sprinter Van</td><td>$740</td></tr>
-          <tr><td>Personal bar, bartender & waitress: Open Bar</td><td>$2,160</td></tr>
-          <tr><td>Mini Street Taco Bar station for 11</td><td>$520</td></tr>
-          <tr><td>Antipasto Bar station for 11</td><td>$460</td></tr>
-          <tr><td>11 Branded (Take Home) Strategy Guides</td><td>$500</td></tr>
-          <tr><td><strong>Subtotal</strong></td><td><strong>$11,780</strong></td></tr>
-          <tr><td>3.5% Sales Tax</td><td>$412</td></tr>
-          <tr><td style="font-size:1.4rem;"><strong>Total</strong></td><td style="font-size:1.4rem;"><strong>$12,192</strong></td></tr>
-        </table>
-      </div>
-      <div style="margin-top:2rem;">
-        <p class="kicker">The following 3 options are training only (real money gaming only in casino). Prizing available.</p>
-        <div class="inclusions-list" style="margin-bottom:1.5rem;">
-          <span><i class="fa-solid fa-check" style="color:var(--dk-green);"></i> 3 Hour Experience</span>
-          <span><i class="fa-solid fa-check" style="color:var(--dk-green);"></i> 2 World Class Pros</span>
-          <span><i class="fa-solid fa-check" style="color:var(--dk-green);"></i> Tables, Chips, Cards & Chairs</span>
-          <span><i class="fa-solid fa-check" style="color:var(--dk-green);"></i> Sprinter Van Transportation</span>
-          <span><i class="fa-solid fa-check" style="color:var(--dk-green);"></i> Open Bar & Appetizers</span>
+    <section id="venue">
+      <div class="reveal"><div class="kicker">THE EXPERIENCE</div><h2>The Venetian Poker Room</h2></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-md); align-items:center;">
+        <div class="media-card">
+          <img src="https://storage.googleapis.com/msgsndr/E2BEbKIK8SvsJICq4vXY/media/693b4f0f5b7f6413a3defc1e.jpg" style="border-radius:20px; width:100%;">
         </div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1rem;">
-          <div class="media-card"><h4>Las Vegas Distillery</h4><p>$14,100 + tax<br>Private room, spirits tasting, custom beverage.</p></div>
-          <div class="media-card"><h4>Mob Museum</h4><p>$15,300 + tax<br>Distillery room + museum tour, custom beverage.</p></div>
-          <div class="media-card"><h4>Allegiant Stadium (Dream)</h4><p>$32,200 + tax<br>NFL private room + stadium tour.</p></div>
+        <div class="media-card">
+          <h3 style="color:var(--dk-green);">Private executive table · Real money gaming</h3>
+          <p style="margin-top:1rem;">A dedicated table in the prestigious Venetian Poker Room with a world‑class pro, premium open bar, curated appetizers, and branded takeaways. The definitive Vegas poker experience.</p>
+          <ul style="margin-top:1.5rem; list-style:none;">
+            <li><i class="fa-solid fa-check" style="color:var(--dk-green);"></i> 3‑hour exclusive session</li>
+            <li><i class="fa-solid fa-check" style="color:var(--dk-green);"></i> 1 professional instructor + dealer</li>
+            <li><i class="fa-solid fa-check" style="color:var(--dk-green);"></i> Premium F&B package</li>
+            <li><i class="fa-solid fa-check" style="color:var(--dk-green);"></i> Sprinter transportation</li>
+            <li><i class="fa-solid fa-check" style="color:var(--dk-green);"></i> Branded strategy guides & keepsakes</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -318,13 +272,17 @@
       </div>
     </div>
 
-    <section id="pros">
-      <div class="reveal"><div class="kicker">elite instructors</div><h2>Some of our Elite Instructors</h2></div>
-      <div class="pro-grid">
-        <div class="pro-card"><img src="https://www.gamblinginsider.com/img/news/kenna-james-ape-in-poker-partnership.jpg"><div class="pro-info"><h3>Kenna James</h3><p>20+ yr Veteran · $4.2M+</p></div></div>
-        <div class="pro-card"><img src="https://www.seminolehardrockpokeropen.com/wp-content/uploads/2022/01/2022-LHPO-Jeff-Madsen.jpg"><div class="pro-info"><h3>Jeff Madsen</h3><p>4 WSOP Bracelets · $7M+</p></div></div>
-        <div class="pro-card"><img src="https://media.cardplayer.com/assets/000/031/133/BLACK_WINS.jpg"><div class="pro-info"><h3>Taylor Black</h3><p>WPT Champ · $5.3M+</p></div></div>
-        <div class="pro-card"><img src="https://s.pnimg.net/9BAfDHPTszjJnQoJZKBseCj5xEK867L6gzAhY0EdeC0/pr:article-leading-desktop-2x/aHR0cHM6Ly9wbmlt/Zy5uZXQvdy9hcnRp/Y2xlcy8wLzY0OS84/MTNmNDJhOWI4Lmpw/Zw.webp"><div class="pro-info"><h3>Nick Pupillo</h3><p>WSOP Bracelet · $6.3M+</p></div></div>
+    <section id="pro">
+      <div class="reveal"><div class="kicker">elite instructor</div><h2>Your Pro for the Afternoon</h2></div>
+      <div class="single-pro">
+        <div class="pro-card">
+          <img src="https://www.seminolehardrockpokeropen.com/wp-content/uploads/2022/01/2022-LHPO-Jeff-Madsen.jpg" alt="Jeff Madsen">
+          <div class="pro-info">
+            <h3>Jeff Madsen</h3>
+            <p style="color:var(--dk-green); font-weight:600;">4 WSOP Bracelets · WSOP Player of the Year · $7M+ earnings</p>
+            <p style="margin-top:0.8rem;">Renowned for his ability to break down complex decisions into clear, actionable insights — perfect for mixed‑skill groups.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -333,9 +291,9 @@
       <div class="timeline-wrapper reveal">
         <div class="timeline">
           <div class="timeline-item"><span class="timeline-num">1:00–1:10 PM</span><div><h3>Get drinks / Get Ready!</h3></div></div>
-          <div class="timeline-item"><span class="timeline-num">1:10–2:20 PM</span><div><h3>Hand Analysis with Pros</h3></div></div>
+          <div class="timeline-item"><span class="timeline-num">1:10–2:20 PM</span><div><h3>Hand Analysis with Jeff Madsen</h3></div></div>
           <div class="timeline-item"><span class="timeline-num">2:20–2:30 PM</span><div><h3>Break</h3></div></div>
-          <div class="timeline-item"><span class="timeline-num">2:30–3:50 PM</span><div><h3>Sit & Go / 2 tables combine at 9‑handed</h3></div></div>
+          <div class="timeline-item"><span class="timeline-num">2:30–3:50 PM</span><div><h3>Sit & Go / Live play with coaching</h3></div></div>
           <div class="timeline-item"><span class="timeline-num">3:50–4:00 PM</span><div><h3>Wrap it up / Handshakes & High Fives</h3></div></div>
         </div>
       </div>
@@ -344,7 +302,7 @@
     <section id="cta">
       <div class="cta-light reveal">
         <h2 style="color:var(--liftoff-slate);">Approve the Liftoff AI + DraftKings experience.</h2>
-        <p style="margin:1.5rem 0; font-size:1.2rem;">We'll lock in your preferred venue for 11 guests on May 20, 1–4pm.</p>
+        <p style="margin:1.5rem 0; font-size:1.2rem;">We'll lock in The Venetian Poker Room for 11 guests on May 20, 1–4pm.</p>
         <div style="background:rgba(0,0,0,0.03); border-radius:24px; padding:1.5rem; margin:2rem 0;">
           <h3 style="color:var(--liftoff-slate);">Next Steps</h3>
           <ul style="list-style:none; text-align:left; max-width:500px; margin:1rem auto;">
@@ -369,7 +327,6 @@
   <script>
     (function(){
       "use strict";
-      // THREE.JS: WHITE DK LOGO (HALF SIZE) + PARTICLES
       const canvas = document.getElementById('bg-canvas');
       let logoMesh, particles;
       let logoActive = false;
@@ -383,7 +340,7 @@
         
         const textureLoader = new THREE.TextureLoader();
         const dkLogoTexture = textureLoader.load('https://assets.cdn.filesafe.space/E2BEbKIK8SvsJICq4vXY/media/69e319a28696a78b8dcb4453.webp');
-        const geometry = new THREE.CylinderGeometry(2.5, 2.5, 0.15, 64); // half size
+        const geometry = new THREE.CylinderGeometry(2.5, 2.5, 0.15, 64);
         const material = new THREE.MeshStandardMaterial({ map: dkLogoTexture, transparent: true, roughness: 0.4, metalness: 0.05, emissive: new THREE.Color(0xffffff), emissiveIntensity: 0.1 });
         logoMesh = new THREE.Mesh(geometry, material);
         logoMesh.rotation.x = 0.4; logoMesh.rotation.y = 0.8;
@@ -425,7 +382,6 @@
         animate();
       }
 
-      // GSAP + SCROLLTRIGGER
       if (window.gsap && window.ScrollTrigger) {
         gsap.registerPlugin(ScrollTrigger);
         gsap.utils.toArray('.reveal').forEach(el => {
@@ -442,14 +398,11 @@
         const rocket = document.getElementById('parallaxRocket');
         const transitionBg = document.getElementById('liftoffTransitionBg');
         const transitionContent = document.getElementById('transitionContent');
-        const float1 = document.getElementById('float1');
-        const float2 = document.getElementById('float2');
-        const float3 = document.getElementById('float3');
-        const float4 = document.getElementById('float4');
+        const floats = ['float1','float2','float3','float4'].map(id => document.getElementById(id));
         
         if (rocket && transitionBg) {
           gsap.set(rocket, { y: '120%', scale: 0.8, opacity: 0 });
-          gsap.set([float1, float2, float3, float4], { opacity: 0, scale: 0.8 });
+          floats.forEach(f => gsap.set(f, { opacity: 0, scale: 0.8 }));
           
           ScrollTrigger.create({
             trigger: '#liftoffTransition',
@@ -467,14 +420,10 @@
                 duration: 0.1, overwrite: true
               });
               const p = progress;
-              const fade1 = Math.min(p * 2.5, 1);
-              const fade2 = Math.min(Math.max(0, (p-0.15)*2.5), 1);
-              const fade3 = Math.min(Math.max(0, (p-0.3)*2.5), 1);
-              const fade4 = Math.min(Math.max(0, (p-0.45)*2.5), 1);
-              gsap.to(float1, { opacity: fade1*0.9, scale: 0.9+fade1*0.2, duration:0.1 });
-              gsap.to(float2, { opacity: fade2*0.9, scale: 0.9+fade2*0.2, duration:0.1 });
-              gsap.to(float3, { opacity: fade3*0.9, scale: 0.9+fade3*0.2, duration:0.1 });
-              gsap.to(float4, { opacity: fade4*0.9, scale: 0.9+fade4*0.2, duration:0.1 });
+              [0, 0.15, 0.3, 0.45].forEach((offset, i) => {
+                const fade = Math.min(Math.max(0, (p - offset) * 2.5), 1);
+                gsap.to(floats[i], { opacity: fade*0.9, scale: 0.9+fade*0.2, duration:0.1 });
+              });
             }
           });
         }
@@ -485,23 +434,9 @@
         btn.addEventListener('click', (e) => { e.preventDefault(); scrollTo(`#${btn.dataset.scroll}`); });
       });
       
-      const cards = document.querySelectorAll('.venue-card');
-      const panels = { venetian: document.getElementById('panel-venetian'), distillery: document.getElementById('panel-distillery'), mob: document.getElementById('panel-mob'), allegiant: document.getElementById('panel-allegiant') };
-      function setActive(venueKey, clickedCard) {
-        cards.forEach(c => c.classList.remove('is-active'));
-        document.querySelectorAll('.venue-panel').forEach(p => p.classList.remove('is-active'));
-        const activeCard = Array.from(cards).find(c => c.dataset.venue === venueKey);
-        activeCard?.classList.add('is-active');
-        if(panels[venueKey]) panels[venueKey].classList.add('is-active');
-        if(clickedCard) clickedCard.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
-      }
-      cards.forEach(c => c.addEventListener('click', function(){ setActive(this.dataset.venue, this); }));
-      
       const fab = document.getElementById('fabTop');
       window.addEventListener('scroll', () => fab.classList.toggle('visible', window.scrollY>400));
       fab.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
-      
-      setActive('venetian');
     })();
   </script>
 </body>
